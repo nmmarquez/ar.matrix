@@ -7,6 +7,9 @@ Maintainer: Neal Marquez <nmmarquez@gmail.com>
 Description: Using sparse precision matricies and Choleski factorization 
     simulates data that is auto-regressive.
 Depends: R (>= 3.3.0)
+Imports:
+    Matrix,
+    sparseMVN
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

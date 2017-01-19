@@ -4,7 +4,8 @@
 \alias{Q.lCAR}
 \title{Precision matrix for a pCAR process}
 \usage{
-Q.lCAR(graph, sigma, rho, vcov = FALSE)
+Q.lCAR(graph, sigma, rho, vcov=FALSE)
+r.lCAR(n, graph, sigma, rho)
 }
 \arguments{
 \item{graph}{matrix, square matrix indicating where two observations are
@@ -23,7 +24,7 @@ precision matrix.}
 Matrix object, either precision or variance covariance
 }
 \description{
-Creates a precision (or optionally variance-covariance) matrix
+Functions for creating precision matricies and observations
 of a Leroux CAR(lCAR) process as defined in MacNab 2011. The matrix defines
 the precision of estimates when observations share connections which are
 conditionally auto-regressive(CAR).

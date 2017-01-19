@@ -1,9 +1,11 @@
 #' Precision matrix for a pCAR process
 #'
-#' @description Creates a precision (or optionally variance-covariance) matrix
+#' @description Functions for creating precision matricies and observations
 #' of a Leroux CAR(lCAR) process as defined in MacNab 2011. The matrix defines
 #' the precision of estimates when observations share connections which are
 #' conditionally auto-regressive(CAR).
+#' @usage Q.lCAR(graph, sigma, rho, vcov=FALSE)
+#' r.lCAR(n, graph, sigma, rho)
 #'
 #' @param graph matrix, square matrix indicating where two observations are
 #' connected (and therefore conditionally auto-regressive).
@@ -14,12 +16,23 @@
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
 #'
-#' @return Matrix object, either precision or variance covariance
+#' @return Q.lCAR returns either a precision or variance-covariance function
+#' with a lCAR structure.
+#'
+#' r.lCAR retrurns a matrix with n rows which are the n observations of a
+#' Gaussian Markov random field lCAR process.
+#'
+#' @export
 
 Q.lCAR <- function(graph, sigma, rho, vcov=FALSE){
     D <- diag(rowSums(graph))
     I <- diag(nrow(graph))
     Q <- sigma**-1 * (rho * (D - graph) + (1 - rho) * I)
-    Q <- ifelse(vcov, solve(Q), Q)
+    if(vcov) Q <- solve(Q)
     Q
+}
+
+r.lCAR <- function(n, graph, sigma, rho){
+    Q <- Q.lCAR(graph, sigma, rho)
+    sim.AR(n, Q)
 }

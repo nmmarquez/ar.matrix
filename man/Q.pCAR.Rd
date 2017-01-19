@@ -4,7 +4,8 @@
 \alias{Q.pCAR}
 \title{Precision matrix for a pCAR process}
 \usage{
-Q.pCAR(graph, sigma, rho, vcov = FALSE)
+Q.pCAR(graph, sigma, rho, vcov=FALSE)
+r.pCAR(n, graph, sigma, rho)
 }
 \arguments{
 \item{graph}{matrix, square matrix indicating where two observations are
@@ -18,12 +19,18 @@ stability of the simulation results are not gaurunteed.}
 
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
+
+\item{n}{int > 0, number of observations to simulate from the GMRF.}
 }
 \value{
-Matrix object, either precision or variance covariance
+Q.pCAR returns either a precision or variance-covariance function
+which follows a pCAR process.
+
+rpCAR retrurns a matrix with n rows which are the n observations of a
+Gaussian Markov random field process
 }
 \description{
-Creates a precision (or optionally variance-covariance) matrix
+Functions for creating precision matricies and observations
 of a proper CAR(pCAR) process as defined in MacNab 2011. The matrix defines
 the precision of estimates when observations share connections which are
 conditionally auto-regressive(CAR).
