@@ -1,4 +1,4 @@
-#'
+#' @rdname Q.AR1
 #'
 #' @export
 

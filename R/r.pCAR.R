@@ -1,4 +1,4 @@
-#'
+#' @rdname Q.pCAR
 #'
 #' @export
 
