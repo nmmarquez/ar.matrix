@@ -41,7 +41,7 @@ conditionally auto-regressive(CAR).
 require("leaflet")
 require("sp")
 
-US.df@data$data <- c(r.lCAR(1, graph=US.graph, 1, .99))
+US.df@data$data <- c(r.pCAR(1, graph=US.graph, 1, .99))
 
 # color palette of data
 pal <- colorNumeric(palette="YlGnBu", domain=US.df@data$data)
