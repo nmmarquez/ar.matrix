@@ -4,18 +4,14 @@ Title: Simulate Auto Regressive data from precision matricies.
 Version: 0.1.0
 Author: Neal Marquez
 Maintainer: Neal Marquez <nmmarquez@gmail.com>
-Description: Using sparse precision matricies and Choleski factorization 
-    simulates data that is auto-regressive.
+Description: Using sparse precision matricies and Choleski factorization simulates data that is auto-regressive.
 Depends: R (>= 3.3.0)
 Imports:
     Matrix,
     sparseMVN
 Suggests:
     ggplot2,
-    rgdal,
-    spdep,
-    surveillance,
-    maptools,
+    sp,
     leaflet
 License: GPL (>= 2)
 Encoding: UTF-8

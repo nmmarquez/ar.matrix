@@ -24,41 +24,19 @@
 #'
 #' @examples
 #' require("leaflet")
-#' require("rgdal")
-#' require("surveillance")
-#' require("maptools")
+#' require("sp")
 #'
-#' # download the 2015 shape file from us census
-#' file_zip <- tempfile()
-#' extr_dir <- tempdir()
-#' url_ <- "http://www2.census.gov/geo/tiger/GENZ2015/shp/cb_2015_us_county_5m.zip"
-#' download.file(url_, file_zip)
-#' unzip(file_zip, exdir=extr_dir)
-#'
-#' # pull the shape file into memory
-#' df <- readOGR(extr_dir)
-#' unlink(file_zip)
-#' unlink(extr_dir)
-#'
-#' # lets only look at Louisiana(22), Texas(48), Mississippi(28), & Arkansas(05)
-#' df <- df[df@data$STATEFP %in% c("22", "48", "28", "05"),]
-#'
-#' # translate to desired proj4 string for leaflet
-#' p4s <- "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84"
-#' df <- spTransform(df, CRS(p4s))
-#'
-#' # simulate data from graph derived from poly2adjmat using lCAR structure
-#' df@data$data <- c(r.pCAR(1, poly2adjmat(df), 1, .99))
+#' US.df@data$data <- c(r.lCAR(1, graph=US.graph, 1, .99))
 #'
 #' # color palette of data
-#' pal <- colorNumeric(palette="YlGnBu", domain=df@data$data)
+#' pal <- colorNumeric(palette="YlGnBu", domain=US.df@data$data)
 #'
 #' # see map
 #' map1<-leaflet() %>%
 #'     addProviderTiles("CartoDB.Positron") %>%
-#'     addPolygons(data=df, fillColor=~pal(data), color="#b2aeae",
+#'     addPolygons(data=US.df, fillColor=~pal(data), color="#b2aeae",
 #'                 fillOpacity=0.7, weight=0.3, smoothFactor=0.2) %>%
-#'     addLegend("bottomright", pal=pal, values=df$data, title="", opacity=1)
+#'     addLegend("bottomright", pal=pal, values=US.df$data, title="", opacity=1)
 #' map1
 #'
 #' @export
