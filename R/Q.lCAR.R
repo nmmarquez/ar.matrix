@@ -26,7 +26,8 @@
 #' require("leaflet")
 #' require("sp")
 #'
-#' US.df@data$data <- c(r.lCAR(1, graph=US.graph, 1, .99))
+#' # simulate lCAR data and attach to spatial polygons data frame
+#' US.df@data$data <- c(r.lCAR(1, graph=US.graph, sigma=1, rho=.99))
 #'
 #' # color palette of data
 #' pal <- colorNumeric(palette="YlGnBu", domain=US.df@data$data)

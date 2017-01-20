@@ -35,9 +35,9 @@ Functions for creating precision matricies and observations of
 an AR1 process
 }
 \examples{
-library("ggplot2")
+require("ggplot2")
 # simulate AR1 GMRF
-obs <- r.AR1(100, 30, 1, .98)
+obs <- r.AR1(100, M=30, sigma=1, rho=.98)
 # resulting matrix is n x M
 dim(obs)
 # subtract off the first time point to more easily observe correlation
