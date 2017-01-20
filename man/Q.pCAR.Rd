@@ -41,6 +41,7 @@ conditionally auto-regressive(CAR).
 require("leaflet")
 require("sp")
 
+# simulate pCAR data and attach to spatial polygons data frame
 US.df@data$data <- c(r.pCAR(1, graph=US.graph, sigma=1, rho=.99))
 
 # color palette of data
