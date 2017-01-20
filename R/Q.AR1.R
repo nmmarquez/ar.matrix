@@ -19,9 +19,25 @@
 #' r.AR1 retrurns a matrix with n rows which are the n observations of a
 #' Gaussian Markov random field  AR1 process.
 #'
+#' @examples
+#' library("ggplot2")
+#' # simulate AR1 GMRF
+#' obs <- r.AR1(100, 30, 1, .98)
+#' # resulting matrix is n x M
+#' dim(obs)
+#' # subtract off the first time point to more easily observe correlation
+#' obs_adj <- obs - obs[,1]
+#' # move objects to a data frame
+#' ar1_df <- data.frame(obs=c(t(obs_adj)), realization=rep(1:100, each=30),
+#'                      time=rep(1:30, 100))
+#' # plot each realization
+#' ggplot(data=ar1_df, aes(time, obs, group=realization, color=realization)) +
+#'     geom_line()
+#'
 #' @export
 
 Q.AR1 <- function(M, sigma, rho, vcov=FALSE){
+    if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- matrix(0, nrow=M, ncol=M)
     Q[1,1] <- 1.
     for(i in 2:M){
@@ -33,9 +49,4 @@ Q.AR1 <- function(M, sigma, rho, vcov=FALSE){
     Q <- (1 / sigma**2) * Q
     if(vcov) Q <- solve(Q)
     Q
-}
-
-r.AR1 <- function(n, M, sigma, rho){
-    Q <- Q.ar1(graph, sigma, rho)
-    sim.AR(n, Q)
 }

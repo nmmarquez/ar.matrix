@@ -11,7 +11,12 @@ Imports:
     Matrix,
     sparseMVN
 Suggests:
-    ggplot2
+    ggplot2,
+    rgdal,
+    spdep,
+    surveillance,
+    maptools,
+    leaflet
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
