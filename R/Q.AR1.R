@@ -3,7 +3,6 @@
 #' @description Functions for creating precision matricies and observations of
 #' an AR1 process
 #' @usage Q.AR1(M, sigma, rho, vcov=FALSE)
-#' r.AR1(n, M, sigma, rho)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the AR1 process.

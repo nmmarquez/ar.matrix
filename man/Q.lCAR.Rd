@@ -6,7 +6,6 @@
 \title{Precision matrix for a pCAR process}
 \usage{
 Q.lCAR(graph, sigma, rho, vcov=FALSE)
-r.lCAR(n, graph, sigma, rho)
 
 r.lCAR(n, graph, sigma, rho)
 }
@@ -22,6 +21,8 @@ stability of the simulation results are not gaurunteed.}
 
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
+
+\item{n}{int > 0, number of observations to simulate from the GMRF.}
 }
 \value{
 Q.lCAR returns either a precision or variance-covariance function

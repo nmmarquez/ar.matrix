@@ -5,7 +5,6 @@
 #' the precision of estimates when observations share connections which are
 #' conditionally auto-regressive(CAR).
 #' @usage Q.pCAR(graph, sigma, rho, vcov=FALSE)
-#' r.pCAR(n, graph, sigma, rho)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param graph matrix, square matrix indicating where two observations are

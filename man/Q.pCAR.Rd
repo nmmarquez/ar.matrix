@@ -6,7 +6,6 @@
 \title{Precision matrix for a pCAR process}
 \usage{
 Q.pCAR(graph, sigma, rho, vcov=FALSE)
-r.pCAR(n, graph, sigma, rho)
 
 r.pCAR(n, graph, sigma, rho)
 }
