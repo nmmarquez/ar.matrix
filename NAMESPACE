@@ -3,5 +3,6 @@
 export(Q.AR1)
 export(Q.lCAR)
 export(Q.pCAR)
-export(rGMRF)
+export(r.AR1)
+export(r.pCAR)
 export(sim.AR)
