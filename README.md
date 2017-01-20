@@ -38,7 +38,7 @@ to better to observe this phenomenon we can run the following code to simuate
 subtract off the first value such that all relaizations start to diverge from
 zero. See the example in help file for r.AR1.
 
-[AR1](http://i.imgur.com/oAnDmwW.png "1D AR1 process")
+![AR1](http://i.imgur.com/oAnDmwW.png "1D AR1 process")
 
 The precision matricies can also be used directly to create more complicated
 multi dimensional process by taking the kronecker product of two matricies.
@@ -67,10 +67,10 @@ Q2D.df <- data.frame(obs=c(sim.AR(1, Q2D)), age=rep(1:ages, years),
 ggplot(data=Q2D.df, aes(year, obs, group=age, color=age)) + geom_line()
 ```
 
-[2D AR1](http://i.imgur.com/kz48GnJ.png "2D AR1 process")
+![2D AR1](http://i.imgur.com/kz48GnJ.png "2D AR1 process")
 
 We can also use a conditional autoregressive process to simulate correlated
 data based on some critera. in this case we simulate data that is correlated in
 geographic space if two spaces are touching one another.
 
-[CAR](http://i.imgur.com/wGqeVWp.png "CAR process")
+![CAR](http://i.imgur.com/wGqeVWp.png "CAR process")
