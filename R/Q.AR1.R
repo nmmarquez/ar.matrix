@@ -10,6 +10,7 @@
 #' @param rho float >= 0 & < 1, how correlated pairwise observations are. The
 #' function will still run with values outside of the range [0,1) however the
 #' stability of the simulation results are not gaurunteed.
+#' @param sparse bool Should the matrix be of class 'dsCMatrix'
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
 #'
@@ -37,6 +38,7 @@
 #' @export
 
 Q.AR1 <- function(M, sigma, rho, vcov=FALSE){
+    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- matrix(0, nrow=M, ncol=M)
     Q[1,1] <- 1.
@@ -48,5 +50,6 @@ Q.AR1 <- function(M, sigma, rho, vcov=FALSE){
     Q[M,M] <- 1.
     Q <- (1 / sigma**2) * Q
     if(vcov) Q <- solve(Q)
+    if(sparse) Q <- Matrix(Q, sparse=TRUE)
     Q
 }

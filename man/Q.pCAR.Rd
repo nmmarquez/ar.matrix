@@ -19,6 +19,8 @@ connected (and therefore conditionally auto-regressive).}
 function will still run with values outside of the range [0,1) however the
 stability of the simulation results are not gaurunteed.}
 
+\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
+
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
 
@@ -56,4 +58,3 @@ map1<-leaflet() \%>\%
 map1
 
 }
-

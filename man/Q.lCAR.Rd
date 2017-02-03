@@ -23,6 +23,8 @@ stability of the simulation results are not gaurunteed.}
 precision matrix.}
 
 \item{n}{int > 0, number of observations to simulate from the GMRF.}
+
+\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
 }
 \value{
 Q.lCAR returns either a precision or variance-covariance function
@@ -56,4 +58,3 @@ map1<-leaflet() \%>\%
 map1
 
 }
-

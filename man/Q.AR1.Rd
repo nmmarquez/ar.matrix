@@ -22,6 +22,8 @@ stability of the simulation results are not gaurunteed.}
 precision matrix.}
 
 \item{n}{int > 0, number of observations to simulate from the GMRF.}
+
+\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
 }
 \value{
 Q.AR1 returns either a precision or variance-covariance function
@@ -50,4 +52,3 @@ ggplot(data=ar1_df, aes(time, obs, group=realization, color=realization)) +
     geom_line()
 
 }
-

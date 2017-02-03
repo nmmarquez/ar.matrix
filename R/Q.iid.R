@@ -7,6 +7,7 @@
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the process.
 #' @param sigma float > 0, standard deviat
+#' @param sparse bool Should the matrix be of class 'dsCMatrix'
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
 #'
@@ -37,9 +38,11 @@
 #' @export
 
 Q.iid <- function(M, sigma, vcov=FALSE){
+    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     D <- diag(rowSums(graph))
     Q <- diag(M) * 1/sigma**2
     if(vcov) Q <- solve(Q)
+    if(sparse) Q <- Matrix(Q, sparse=TRUE)
     Q
 }

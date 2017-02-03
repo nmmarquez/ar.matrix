@@ -57,4 +57,3 @@ map1<-leaflet() \%>\%
 map1
 
 }
-

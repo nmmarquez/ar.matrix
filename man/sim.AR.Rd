@@ -46,4 +46,3 @@ Q2D.df <- data.frame(obs=c(sim.AR(1, Q2D)), age=rep(1:ages, years),
 ggplot(data=Q2D.df, aes(year, obs, group=age, color=age)) + geom_line()
 
 }
-
