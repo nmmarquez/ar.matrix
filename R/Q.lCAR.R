@@ -43,7 +43,7 @@
 #'
 #' @export
 
-Q.lCAR <- function(graph, sigma, rho, vcov=FALSE){
+Q.lCAR <- function(graph, sigma, rho, sparse=FALSE, vcov=FALSE){
     library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     D <- diag(rowSums(graph))

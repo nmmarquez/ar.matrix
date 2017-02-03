@@ -14,12 +14,12 @@ r.iid(n, M, sigma)
 
 \item{sigma}{float > 0, standard deviat}
 
+\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
+
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
 
 \item{n}{int > 0, number of observations to simulate from the GMRF.}
-
-\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
 }
 \value{
 Q.lCAR returns either a precision or variance-covariance function

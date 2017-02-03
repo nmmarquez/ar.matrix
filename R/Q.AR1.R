@@ -37,7 +37,7 @@
 #'
 #' @export
 
-Q.AR1 <- function(M, sigma, rho, vcov=FALSE){
+Q.AR1 <- function(M, sigma, rho, sparse=FALSE, vcov=FALSE){
     library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- matrix(0, nrow=M, ncol=M)

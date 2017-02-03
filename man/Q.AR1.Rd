@@ -18,12 +18,12 @@ r.AR1(n, M, sigma, rho)
 function will still run with values outside of the range [0,1) however the
 stability of the simulation results are not gaurunteed.}
 
+\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
+
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
 
 \item{n}{int > 0, number of observations to simulate from the GMRF.}
-
-\item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
 }
 \value{
 Q.AR1 returns either a precision or variance-covariance function

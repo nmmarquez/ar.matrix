@@ -37,7 +37,7 @@
 #'
 #' @export
 
-Q.iid <- function(M, sigma, vcov=FALSE){
+Q.iid <- function(M, sigma, sparse=FALSE, vcov=FALSE){
     library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     D <- diag(rowSums(graph))
