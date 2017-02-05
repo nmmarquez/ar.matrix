@@ -40,7 +40,6 @@
 Q.iid <- function(M, sigma, sparse=FALSE, vcov=FALSE){
     library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
-    D <- diag(rowSums(graph))
     Q <- diag(M) * 1/sigma**2
     if(vcov) Q <- solve(Q)
     if(sparse) Q <- Matrix(Q, sparse=TRUE)
