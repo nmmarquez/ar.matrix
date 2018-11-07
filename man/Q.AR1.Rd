@@ -5,14 +5,14 @@
 \alias{r.AR1}
 \title{Precision matrix for an AR1 process}
 \usage{
-Q.AR1(M, sigma, rho, vcov=FALSE)
+Q.AR1(M, sigma, rho, sparse=FALSE, vcov=FALSE)
 
 r.AR1(n, M, sigma, rho)
 }
 \arguments{
 \item{M}{int > 0, number of elements in the AR1 process.}
 
-\item{sigma}{float > 0, pairwise observation variance.}
+\item{sigma}{float > 0, pairwise observation standard deviation.}
 
 \item{rho}{float >= 0 & < 1, how correlated pairwise observations are. The
 function will still run with values outside of the range [0,1) however the

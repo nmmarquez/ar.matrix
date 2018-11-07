@@ -5,7 +5,7 @@
 \alias{r.iid}
 \title{Precision matrix for a IID process}
 \usage{
-Q.iid(M, sigma vcov=FALSE)
+Q.iid(M, sigma, sparse=FALSE,  vcov=FALSE)
 
 r.iid(n, M, sigma)
 }
@@ -22,11 +22,11 @@ precision matrix.}
 \item{n}{int > 0, number of observations to simulate from the GMRF.}
 }
 \value{
-Q.lCAR returns either a precision or variance-covariance function
+Q.iid returns either a precision or variance-covariance function
 with iid structure.
 
-r.lCAR retrurns a matrix with n rows which are the n observations of a
-Gaussian Markov random field lCAR process.
+r.iid retrurns a matrix with n rows which are the n observations of a
+Gaussian Markov random field iid process.
 }
 \description{
 Functions for creating precision matricies and observations

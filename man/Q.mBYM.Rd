@@ -13,11 +13,11 @@ r.mBYM(n, graph, sigma, rho)
 \item{graph}{matrix, square matrix indicating where two observations are
 connected (and therefore conditionally auto-regressive).}
 
-\item{sigma}{float > 0, pairwise observation variance}
+\item{sigma}{float > 0, process standard derviation see MacNab 2011.}
 
-\item{rho}{float >= 0 & < 1, how correlated pairwise observations are. The
+\item{rho}{float >= 0 & < 1, how correlated neighbors are. The
 function will still run with values outside of the range [0,1) however the
-stability of the simulation results are not gaurunteed.}
+stability of the simulation results are not gaurunteed. see MacNab 2011.}
 
 \item{vcov}{bool If the vcov matrix should be returned instead of the
 precision matrix.}
@@ -39,6 +39,8 @@ are conditionally auto-regressive(CAR). Because the precision matrix is
 not symetric the process is not a true GMRF.
 }
 \examples{
+
+\dontrun{
 require("leaflet")
 require("sp")
 
@@ -55,5 +57,10 @@ map1<-leaflet() \%>\%
                 fillOpacity=0.7, weight=0.3, smoothFactor=0.2) \%>\%
     addLegend("bottomright", pal=pal, values=US.df$data, title="", opacity=1)
 map1
+}
 
+}
+\references{
+Y.C. MacNab On Gaussian Markov random fields and Bayesian
+disease mapping. Statistical Methods in Medical Research. 2011.
 }

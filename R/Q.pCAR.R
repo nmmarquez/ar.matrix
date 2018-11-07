@@ -4,15 +4,15 @@
 #' of a proper CAR(pCAR) process as defined in MacNab 2011. The matrix defines
 #' the precision of estimates when observations share connections which are
 #' conditionally auto-regressive(CAR).
-#' @usage Q.pCAR(graph, sigma, rho, vcov=FALSE)
+#' @usage Q.pCAR(graph, sigma, rho, sparse=FALSE, vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param graph matrix, square matrix indicating where two observations are
 #' connected (and therefore conditionally auto-regressive).
-#' @param sigma float > 0, pairwise observation variance
-#' @param rho float >= 0 & < 1, how correlated pairwise observations are. The
+#' @param sigma float > 0, process standard derviation see MacNab 2011.
+#' @param rho float >= 0 & < 1, how correlated neighbors are. The
 #' function will still run with values outside of the range [0,1) however the
-#' stability of the simulation results are not gaurunteed.
+#' stability of the simulation results are not gaurunteed. see MacNab 2011.
 #' @param sparse bool Should the matrix be of class 'dsCMatrix'
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
@@ -41,14 +41,16 @@
 #'     addLegend("bottomright", pal=pal, values=US.df$data, title="", opacity=1)
 #' map1
 #'
+#' @references Y.C. MacNab On Gaussian Markov random fields and Bayesian
+#' disease mapping. Statistical Methods in Medical Research. 2011.
+#'
 #' @export
 
 Q.pCAR <- function(graph, sigma, rho, sparse=FALSE, vcov=FALSE){
-    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
-    Q <- sigma**-1 * (diag(rowSums(graph)) - rho * graph)
-    if(vcov) Q <- solve(Q)
-    if(sparse) Q <- Matrix(Q, sparse=TRUE)
+    Q <- sigma**-1 * (diag(Matrix::rowSums(graph)) - rho * graph)
+    if(vcov) Q <- Matrix::solve(Q)
+    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
     Q
 }
 

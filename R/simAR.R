@@ -38,7 +38,8 @@
 #' @export
 
 sim.AR <- function(n, Q){
-    library(Matrix)
-    library(sparseMVN)
-    rmvn.sparse(n, rep(0, nrow(Q)), Cholesky(Matrix(Q, sparse=TRUE)), T)
+    sparseMVN::rmvn.sparse(
+        n,
+        rep(0, nrow(Q)),
+        Matrix::Cholesky(Matrix::Matrix(Q, sparse=TRUE)), T)
 }

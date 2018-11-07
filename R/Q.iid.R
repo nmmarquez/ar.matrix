@@ -2,7 +2,7 @@
 #'
 #' @description Functions for creating precision matricies and observations
 #' of a independent identically distributed GMRF process.
-#' @usage Q.iid(M, sigma vcov=FALSE)
+#' @usage Q.iid(M, sigma, sparse=FALSE,  vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the process.
@@ -11,11 +11,11 @@
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
 #'
-#' @return Q.lCAR returns either a precision or variance-covariance function
+#' @return Q.iid returns either a precision or variance-covariance function
 #' with iid structure.
 #'
-#' r.lCAR retrurns a matrix with n rows which are the n observations of a
-#' Gaussian Markov random field lCAR process.
+#' r.iid retrurns a matrix with n rows which are the n observations of a
+#' Gaussian Markov random field iid process.
 #'
 #' @examples
 #' require("leaflet")
@@ -38,10 +38,9 @@
 #' @export
 
 Q.iid <- function(M, sigma, sparse=FALSE, vcov=FALSE){
-    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- diag(M) * 1/sigma**2
-    if(vcov) Q <- solve(Q)
-    if(sparse) Q <- Matrix(Q, sparse=TRUE)
+    if(vcov) Q <- Matrix::solve(Q)
+    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
     Q
 }

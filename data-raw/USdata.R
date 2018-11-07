@@ -3,6 +3,7 @@ require("rgdal")
 require("surveillance")
 require("maptools")
 require("devtools")
+require("stringi")
 
 # download the 2015 shape file from us census
 file_zip <- tempfile()
@@ -22,6 +23,7 @@ df <- df[df@data$STATEFP %in% c("22", "48", "28", "05"),]
 # translate to desired proj4 string for leaflet
 p4s <- "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84"
 US.df <- spTransform(df, CRS(p4s))
+US.df$NAME <- stri_trans_general(US.df$NAME, "latin-ascii")
 US.graph <- poly2adjmat(US.df)
 
 use_data(US.df, US.graph)

@@ -2,11 +2,11 @@
 #'
 #' @description Functions for creating precision matricies and observations of
 #' an AR1 process
-#' @usage Q.AR1(M, sigma, rho, vcov=FALSE)
+#' @usage Q.AR1(M, sigma, rho, sparse=FALSE, vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the AR1 process.
-#' @param sigma float > 0, pairwise observation variance.
+#' @param sigma float > 0, pairwise observation standard deviation.
 #' @param rho float >= 0 & < 1, how correlated pairwise observations are. The
 #' function will still run with values outside of the range [0,1) however the
 #' stability of the simulation results are not gaurunteed.
@@ -38,9 +38,8 @@
 #' @export
 
 Q.AR1 <- function(M, sigma, rho, sparse=FALSE, vcov=FALSE){
-    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
-    Q <- matrix(0, nrow=M, ncol=M)
+    Q <- Matrix::Matrix(0, nrow=M, ncol=M)
     Q[1,1] <- 1.
     for(i in 2:M){
         Q[i,i] <- 1 + rho**2
@@ -49,7 +48,7 @@ Q.AR1 <- function(M, sigma, rho, sparse=FALSE, vcov=FALSE){
     }
     Q[M,M] <- 1.
     Q <- (1 / sigma**2) * Q
-    if(vcov) Q <- solve(Q)
-    if(sparse) Q <- Matrix(Q, sparse=TRUE)
+    if(vcov) Q <- Matrix::solve(Q)
+    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
     Q
 }

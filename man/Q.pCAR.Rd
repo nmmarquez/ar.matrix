@@ -5,7 +5,7 @@
 \alias{r.pCAR}
 \title{Precision matrix for a pCAR process}
 \usage{
-Q.pCAR(graph, sigma, rho, vcov=FALSE)
+Q.pCAR(graph, sigma, rho, sparse=FALSE, vcov=FALSE)
 
 r.pCAR(n, graph, sigma, rho)
 }
@@ -13,11 +13,11 @@ r.pCAR(n, graph, sigma, rho)
 \item{graph}{matrix, square matrix indicating where two observations are
 connected (and therefore conditionally auto-regressive).}
 
-\item{sigma}{float > 0, pairwise observation variance}
+\item{sigma}{float > 0, process standard derviation see MacNab 2011.}
 
-\item{rho}{float >= 0 & < 1, how correlated pairwise observations are. The
+\item{rho}{float >= 0 & < 1, how correlated neighbors are. The
 function will still run with values outside of the range [0,1) however the
-stability of the simulation results are not gaurunteed.}
+stability of the simulation results are not gaurunteed. see MacNab 2011.}
 
 \item{sparse}{bool Should the matrix be of class 'dsCMatrix'}
 
@@ -57,4 +57,8 @@ map1<-leaflet() \%>\%
     addLegend("bottomright", pal=pal, values=US.df$data, title="", opacity=1)
 map1
 
+}
+\references{
+Y.C. MacNab On Gaussian Markov random fields and Bayesian
+disease mapping. Statistical Methods in Medical Research. 2011.
 }

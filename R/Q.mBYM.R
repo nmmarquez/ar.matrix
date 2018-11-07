@@ -10,10 +10,10 @@
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param graph matrix, square matrix indicating where two observations are
 #' connected (and therefore conditionally auto-regressive).
-#' @param sigma float > 0, pairwise observation variance
-#' @param rho float >= 0 & < 1, how correlated pairwise observations are. The
+#' @param sigma float > 0, process standard derviation see MacNab 2011.
+#' @param rho float >= 0 & < 1, how correlated neighbors are. The
 #' function will still run with values outside of the range [0,1) however the
-#' stability of the simulation results are not gaurunteed.
+#' stability of the simulation results are not gaurunteed. see MacNab 2011.
 #' @param vcov bool If the vcov matrix should be returned instead of the
 #' precision matrix.
 #'
@@ -24,6 +24,8 @@
 #' Gaussian Markov random field of a modified BYM process.
 #'
 #' @examples
+#' 
+#' \dontrun{
 #' require("leaflet")
 #' require("sp")
 #'
@@ -40,16 +42,18 @@
 #'                 fillOpacity=0.7, weight=0.3, smoothFactor=0.2) %>%
 #'     addLegend("bottomright", pal=pal, values=US.df$data, title="", opacity=1)
 #' map1
+#'}
 #'
+#' @references Y.C. MacNab On Gaussian Markov random fields and Bayesian
+#' disease mapping. Statistical Methods in Medical Research. 2011.
+#' 
 #' @export
 
 Q.mBYM <- function(graph, sigma, rho, vcov=FALSE){
-    library(MASS)
-    library(Matrix)
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
-    D <- diag(rowSums(graph))
+    D <- diag(Matrix::rowSums(graph))
     I <- diag(nrow(graph))
-    Q_star <- (rho * sigma**2 * ginv(D - graph) + sigma**2 * I * (1 - rho))
-    if(!vcov) Q_star <- forceSymmetric(solve(Q_star))
+    Q_star <- (rho * sigma**2 * MASS::ginv(D-graph) + sigma**2 * I * (1 - rho))
+    if(!vcov) Q_star <- Matrix::forceSymmetric(Matrix::solve(Q_star))
     Q_star
 }
