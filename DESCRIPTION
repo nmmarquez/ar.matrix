@@ -1,11 +1,11 @@
 Package: ar.matrix
 Type: Package
-Title: Simulate Auto Regressive Data from Precision Matricies
+Title: Simulate Auto Regressive Data from Precision Matrices
 Version: 0.1.0
 Authors@R: c(person("Neal","Marquez",role=c("aut","cre","cph"),email="nmarquez@uw.edu"))
 Author: Neal Marquez [aut, cre, cph]
 Maintainer: Neal Marquez <nmarquez@uw.edu>
-Description: Using sparse precision matricies and Choleski factorization simulates data that is auto-regressive.
+Description: Using sparse precision matrices and Cholesky factorization simulates data that is auto-regressive.
 Depends: R (>= 3.3.0)
 Imports:
     MASS,
