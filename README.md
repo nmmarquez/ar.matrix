@@ -1,4 +1,7 @@
 # ar.matrix
+
+You can install `ar.matrix` via CRAN `install.packages("ar.matrix")`  
+
 Using sparse precision matricies and Choleski factorization simulates data that
 is auto-regressive. Currently offers support for creation of precision and
 variance-covariance matricies as well as simulating data from a Gaussian
