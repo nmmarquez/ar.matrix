@@ -4,7 +4,7 @@
 #' of a Leroux CAR(lCAR) process as defined in MacNab 2011. The matrix defines
 #' the precision of estimates when observations share connections which are
 #' conditionally auto-regressive(CAR).
-#' @usage Q.lCAR(graph, sigma, rho, sparse=FALSE, vcov=FALSE)
+#' @usage Q.lCAR(graph, sigma, rho, sparse=TRUE, vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param graph matrix, square matrix indicating where two observations are
@@ -46,12 +46,12 @@
 #'
 #' @export
 
-Q.lCAR <- function(graph, sigma, rho, sparse=FALSE, vcov=FALSE){
+Q.lCAR <- function(graph, sigma, rho, sparse=TRUE, vcov=FALSE){
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     D <- diag(Matrix::rowSums(graph))
     I <- diag(nrow(graph))
     Q <- sigma**-1 * (rho * (D - graph) + (1 - rho) * I)
     if(vcov) Q <- Matrix::solve(Q)
-    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
+    if(!sparse) Q <- Matrix::Matrix(Q, sparse=FALSE)
     Q
 }

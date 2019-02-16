@@ -2,7 +2,7 @@
 #'
 #' @description Functions for creating precision matricies and observations of
 #' an AR1 process
-#' @usage Q.AR1(M, sigma, rho, sparse=FALSE, vcov=FALSE)
+#' @usage Q.AR1(M, sigma, rho, sparse=TRUE, vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the AR1 process.
@@ -37,7 +37,7 @@
 #'
 #' @export
 
-Q.AR1 <- function(M, sigma, rho, sparse=FALSE, vcov=FALSE){
+Q.AR1 <- function(M, sigma, rho, sparse=TRUE, vcov=FALSE){
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- Matrix::Matrix(0, nrow=M, ncol=M)
     Q[1,1] <- 1.
@@ -49,6 +49,6 @@ Q.AR1 <- function(M, sigma, rho, sparse=FALSE, vcov=FALSE){
     Q[M,M] <- 1.
     Q <- (1 / sigma**2) * Q
     if(vcov) Q <- Matrix::solve(Q)
-    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
+    if(!sparse) Q <- Matrix::Matrix(Q, sparse=FALSE)
     Q
 }

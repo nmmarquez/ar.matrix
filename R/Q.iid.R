@@ -2,7 +2,7 @@
 #'
 #' @description Functions for creating precision matricies and observations
 #' of a independent identically distributed GMRF process.
-#' @usage Q.iid(M, sigma, sparse=FALSE,  vcov=FALSE)
+#' @usage Q.iid(M, sigma, sparse=TRUE,  vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param M int > 0, number of elements in the process.
@@ -37,10 +37,10 @@
 #'
 #' @export
 
-Q.iid <- function(M, sigma, sparse=FALSE, vcov=FALSE){
+Q.iid <- function(M, sigma, sparse=TRUE, vcov=FALSE){
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- diag(M) * 1/sigma**2
     if(vcov) Q <- Matrix::solve(Q)
-    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
+    if(!sparse) Q <- Matrix::Matrix(Q, sparse=FALSE)
     Q
 }

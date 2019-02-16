@@ -5,7 +5,7 @@
 \alias{r.AR1}
 \title{Precision matrix for an AR1 process}
 \usage{
-Q.AR1(M, sigma, rho, sparse=FALSE, vcov=FALSE)
+Q.AR1(M, sigma, rho, sparse=TRUE, vcov=FALSE)
 
 r.AR1(n, M, sigma, rho)
 }

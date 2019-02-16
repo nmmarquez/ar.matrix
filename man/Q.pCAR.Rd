@@ -5,7 +5,7 @@
 \alias{r.pCAR}
 \title{Precision matrix for a pCAR process}
 \usage{
-Q.pCAR(graph, sigma, rho, sparse=FALSE, vcov=FALSE)
+Q.pCAR(graph, sigma, rho, sparse=TRUE, vcov=FALSE)
 
 r.pCAR(n, graph, sigma, rho)
 }

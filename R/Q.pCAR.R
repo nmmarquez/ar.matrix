@@ -4,7 +4,7 @@
 #' of a proper CAR(pCAR) process as defined in MacNab 2011. The matrix defines
 #' the precision of estimates when observations share connections which are
 #' conditionally auto-regressive(CAR).
-#' @usage Q.pCAR(graph, sigma, rho, sparse=FALSE, vcov=FALSE)
+#' @usage Q.pCAR(graph, sigma, rho, sparse=TRUE, vcov=FALSE)
 #'
 #' @param n int > 0, number of observations to simulate from the GMRF.
 #' @param graph matrix, square matrix indicating where two observations are
@@ -46,11 +46,11 @@
 #'
 #' @export
 
-Q.pCAR <- function(graph, sigma, rho, sparse=FALSE, vcov=FALSE){
+Q.pCAR <- function(graph, sigma, rho, sparse=TRUE, vcov=FALSE){
     if(sigma <= 0) stop("sigma paramter must be greater than 0.")
     Q <- sigma**-1 * (diag(Matrix::rowSums(graph)) - rho * graph)
     if(vcov) Q <- Matrix::solve(Q)
-    if(sparse) Q <- Matrix::Matrix(Q, sparse=TRUE)
+    if(!sparse) Q <- Matrix::Matrix(Q, sparse=FALSE)
     Q
 }
 

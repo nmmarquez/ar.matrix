@@ -5,7 +5,7 @@
 \alias{r.iid}
 \title{Precision matrix for a IID process}
 \usage{
-Q.iid(M, sigma, sparse=FALSE,  vcov=FALSE)
+Q.iid(M, sigma, sparse=TRUE,  vcov=FALSE)
 
 r.iid(n, M, sigma)
 }
